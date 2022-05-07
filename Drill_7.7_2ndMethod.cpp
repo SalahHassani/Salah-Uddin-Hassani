@@ -80,8 +80,14 @@ double primary(){
         }
         case '8':               // we use ‘8’ to represent a number
             return t.value;    // return the number’s value
+        case '-':   
+			return - primary();
+		case '+':   
+			return primary();
         case 'k':
-        		return k;
+        	return k;
+        case 'q':
+        	return 0;
         case 's':
        	{
             t = ts.get();
@@ -153,7 +159,7 @@ int main(){
         //Token t = ts.get();
         while (cin) {
             Token t = ts.get();
-            if (t.kind == 'q') break;    // ‘q’ for “quit”
+            if (t.kind == 'q') return 0;    // ‘q’ for “quit”
             if (t.kind == '=')          // ‘;’ for “print now”
                 cout << " = " << val << '\n';
             else
